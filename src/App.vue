@@ -226,7 +226,8 @@ const lookContent = () => {
 <!-- ————————————————————————————————————风格———————————————————————————————————————————— -->
 <style scoped>
 .demo-pagination-block {
-  margin-top: 10px;
+  margin-top: 20px;
+  float: right;
 }
 
 .table-box {
