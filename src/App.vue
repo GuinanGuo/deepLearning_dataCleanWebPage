@@ -44,11 +44,11 @@
     <!-- ———————————————分页———————————————— -->
     <div class="demo-pagination-block">
       <el-pagination 
-      v-model:currentPage="Page" 
+      v-model:currentPage="page" 
       v-model:page-size="limit" 
       :page-sizes="[10, 20, 30]"
       background
-      layout="sizes, prev, pager, next,jumper" 
+      layout="total, sizes, prev, pager, next"
       :total="tableData.length" 
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange" />
