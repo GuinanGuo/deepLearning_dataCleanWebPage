@@ -47,7 +47,8 @@
       v-model:currentPage="Page" 
       v-model:page-size="limit" 
       :page-sizes="[10, 20, 30]"
-      layout="sizes, prev, pager, next" 
+      background
+      layout="sizes, prev, pager, next,jumper" 
       :total="tableData.length" 
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange" />
@@ -312,12 +313,12 @@ let gridData = $ref([
 ])
 // ——————————————————————————————————————方法——————————————————————————————————————————————
 
-const handleSizeChange = (val)=>{
-  limit = val
-}
-
 const handleCurrentChange = (val)=>{
   page = val
+}
+const handleSizeChange=(val)=>{
+  limit = val
+  page = 1
 }
 
 const lookContent = () => {
