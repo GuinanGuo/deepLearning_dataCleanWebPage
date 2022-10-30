@@ -25,8 +25,7 @@
   </div>
   <!-- ——————————表格部分—————————— -->
   <div class="table-box">
-    <!-- 分页原理，让获取的数据做个分割 tableData.slice(（当前页数-1）*每页条数，当前页数*当前条数）-->
-    <el-table :data="tableData.slice((page - 1) * limit, page * limit)" style="width: 200%" max-height="750" border>
+    <el-table :data="tableData.slice((page - 1) * limit, page * limit)" style="width: 200%" max-height="500" border>
       <el-table-column prop="id" label="任务序号" width="120" />
       <el-table-column prop="type" label="清洗类型" width="120" />
       <el-table-column prop="method" label="清洗方式" width="120" />
@@ -71,7 +70,7 @@
 <script setup>
 // ——————————————————————————————————————数据——————————————————————————————————————————————
 import { reactive, ref } from "vue"
-let num = $ref(15)
+
 let page = $ref(1)
 let limit = $ref(10)
 let dialogTableVisible = $ref(false)
@@ -211,6 +210,96 @@ let tableData = $ref([
     afterDataset: '划痕V2',
     status: '清洗完成',
   },
+  {
+    id: '16',
+    type: '通用清洗',
+    method: '去模糊',
+    startTime: '2016-05-01',
+    beforeDataset: '划痕V1',
+    afterDataset: '划痕V2',
+    status: '清洗完成',
+  },
+  {
+    id: '17',
+    type: '通用清洗',
+    method: '去模糊',
+    startTime: '2016-05-01',
+    beforeDataset: '划痕V1',
+    afterDataset: '划痕V2',
+    status: '清洗完成',
+  },
+  {
+    id: '18',
+    type: '通用清洗',
+    method: '去模糊',
+    startTime: '2016-05-01',
+    beforeDataset: '划痕V1',
+    afterDataset: '划痕V2',
+    status: '清洗完成',
+  },
+  {
+    id: '19',
+    type: '通用清洗',
+    method: '去模糊',
+    startTime: '2016-05-01',
+    beforeDataset: '划痕V1',
+    afterDataset: '划痕V2',
+    status: '清洗完成',
+  },
+  {
+    id: '20',
+    type: '通用清洗',
+    method: '去模糊',
+    startTime: '2016-05-01',
+    beforeDataset: '划痕V1',
+    afterDataset: '划痕V2',
+    status: '清洗完成',
+  },
+  {
+    id: '21',
+    type: '通用清洗',
+    method: '去模糊',
+    startTime: '2016-05-01',
+    beforeDataset: '划痕V1',
+    afterDataset: '划痕V2',
+    status: '清洗完成',
+  },
+  {
+    id: '22',
+    type: '通用清洗',
+    method: '去模糊',
+    startTime: '2016-05-01',
+    beforeDataset: '划痕V1',
+    afterDataset: '划痕V2',
+    status: '清洗完成',
+  },
+  {
+    id: '23',
+    type: '通用清洗',
+    method: '去模糊',
+    startTime: '2016-05-01',
+    beforeDataset: '划痕V1',
+    afterDataset: '划痕V2',
+    status: '清洗完成',
+  },
+  {
+    id: '24',
+    type: '通用清洗',
+    method: '去模糊',
+    startTime: '2016-05-01',
+    beforeDataset: '划痕V1',
+    afterDataset: '划痕V2',
+    status: '清洗完成',
+  },
+  {
+    id: '25',
+    type: '通用清洗',
+    method: '去模糊',
+    startTime: '2016-05-01',
+    beforeDataset: '划痕V1',
+    afterDataset: '划痕V2',
+    status: '清洗完成',
+  },
 ])
 let gridData = $ref([
   {
@@ -222,16 +311,20 @@ let gridData = $ref([
   },
 ])
 // ——————————————————————————————————————方法——————————————————————————————————————————————
+
+const handleSizeChange = (val)=>{
+  limit = val
+}
+
+const handleCurrentChange = (val)=>{
+  page = val
+}
+
 const lookContent = () => {
   dialogTableVisible = true
   console.log();
 }
-const handleSizeChange = (val)=>{
-  limit = val
-}
-const handleCurrentChange = (val)=>{
-  page = val
-}
+
 </script>
 
 
