@@ -25,7 +25,8 @@
   </div>
   <!-- ——————————表格部分—————————— -->
   <div class="table-box">
-    <el-table :data="tableData" style="width: 200%" max-height="750" border>
+    <!-- 分页原理，让获取的数据做个分割 tableData.slice(（当前页数-1）*每页条数，当前页数*当前条数）-->
+    <el-table :data="tableData.slice((page - 1) * limit, page * limit)" style="width: 200%" max-height="750" border>
       <el-table-column prop="id" label="任务序号" width="120" />
       <el-table-column prop="type" label="清洗类型" width="120" />
       <el-table-column prop="method" label="清洗方式" width="120" />
@@ -43,9 +44,14 @@
     </el-table>
     <!-- ———————————————分页———————————————— -->
     <div class="demo-pagination-block">
-      <el-pagination v-model:currentPage="currentPage1" v-model:page-size="pageSize1" :page-sizes="[10, 20, 30]"
-        layout="sizes, prev, pager, next" :total="tableData.length" @size-change="handleSizeChange"
-        @current-change="handleCurrentChange" />
+      <el-pagination 
+      v-model:currentPage="Page" 
+      v-model:page-size="limit" 
+      :page-sizes="[10, 20, 30]"
+      layout="sizes, prev, pager, next" 
+      :total="tableData.length" 
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange" />
     </div>
   </div>
 
@@ -66,8 +72,8 @@
 // ——————————————————————————————————————数据——————————————————————————————————————————————
 import { reactive, ref } from "vue"
 let num = $ref(15)
-let currentPage1 = $ref(1)
-let pageSize1 = $ref(10)
+let page = $ref(1)
+let limit = $ref(10)
 let dialogTableVisible = $ref(false)
 let tableData = $ref([
   {
@@ -220,6 +226,12 @@ const lookContent = () => {
   dialogTableVisible = true
   console.log();
 }
+const handleSizeChange = (val)=>{
+  limit = val
+}
+const handleCurrentChange = (val)=>{
+  page = val
+}
 </script>
 
 
@@ -248,7 +260,7 @@ const lookContent = () => {
 .title-text1 {
   display: flex;
   justify-content: left;
-  
+
   font-size: 15px;
   font-weight: 200;
   text-align: left;
